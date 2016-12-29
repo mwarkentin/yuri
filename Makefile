@@ -7,5 +7,8 @@ fmt: ## Format codebase
 install: ## Install yuri
 	go install src/yuri.go
 
-.PHONY: help fmt install
+vendor: ## Update dependencies
+	govendor fetch github.com/urfave/cli
+
+.PHONY: help fmt install vendor
 .DEFAULT_GOAL := help
