@@ -24,12 +24,12 @@ func main() {
 		}
 
 		uri := c.Args().First()
-		parsedUri, err := url.Parse(uri)
+		parsedURI, err := url.Parse(uri)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		b, err := json.Marshal(parsedUri)
+		b, err := json.Marshal(parsedURI)
 		if err != nil {
 			fmt.Println("error:", err)
 		}
