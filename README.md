@@ -13,12 +13,7 @@ $ brew install eqnxio/michael_warkentin/yuri
 
 ### Command line
 
-It can also be installed via the command line:
-
-```
-$ curl -O https://bin.equinox.io/c/8PiCA8NXyzL/yuri-stable-darwin-amd64.zip
-$ unzip yuri-stable-darwin-amd64.zip -d /usr/local/bin
-```
+Command line installation instructions can be found on [equinox](https://dl.equinox.io/michael_warkentin/yuri/stable).
 
 ### Source
 
