@@ -1,6 +1,35 @@
 # yuri
 CLI tool to parse URIs into their components
 
+## Installation
+
+### Homebrew
+
+This application can be installed via [Homebrew](http://brew.sh/):
+
+```
+$ brew install eqnxio/michael_warkentin/yuri
+```
+
+### Command line
+
+It can also be installed via the command line:
+
+```
+$ curl -O https://bin.equinox.io/c/8PiCA8NXyzL/yuri-stable-darwin-amd64.zip
+$ unzip yuri-stable-darwin-amd64.zip -d /usr/local/bin
+```
+
+### Source
+
+If you want to install from source:
+
+```
+$ git clone git@github.com:mwarkentin/yuri.git
+$ cd yuri
+$ make install
+```
+
 ## Examples
 
 ```
