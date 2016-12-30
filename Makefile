@@ -7,6 +7,10 @@ fmt: ## Format codebase
 install: ## Install yuri
 	go install src/yuri.go
 
+release: ## Publish release to equinox.io
+	@echo equinox release --config \"./equinox.yaml\" --version \"${version}\" --token \"****\" ./src/yuri.go
+	@equinox release --config "./equinox.yaml" --version "${version}" --token "${EQUINOX_TOKEN}" ./src/yuri.go
+
 vendor: ## Update dependencies
 	govendor fetch github.com/urfave/cli
 
