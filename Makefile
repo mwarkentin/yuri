@@ -7,7 +7,10 @@ fmt: ## Format codebase
 install: ## Install yuri
 	go install src/yuri.go
 
-release: ## Publish release to equinox.io
+release: ## Publish release to equinox.io | args: version
+ifndef version
+  $(error version is undefined)
+endif
 	@echo equinox release --config \"./equinox.yaml\" --version \"${version}\" --token \"****\" ./src/yuri.go
 	@equinox release --config "./equinox.yaml" --version "${version}" --token "${EQUINOX_TOKEN}" ./src/yuri.go
 
