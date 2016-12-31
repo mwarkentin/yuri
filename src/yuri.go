@@ -29,7 +29,19 @@ func main() {
 			log.Fatal(err)
 		}
 
-		b, err := json.Marshal(parsedURI)
+		var m map[string]string
+		m = make(map[string]string)
+
+		m["scheme"] = parsedURI.Scheme
+		m["opaque"] = parsedURI.Opaque
+		m["host"] = parsedURI.Host
+		m["path"] = parsedURI.Path
+		m["rawpath"] = parsedURI.RawPath
+		m["rawquery"] = parsedURI.RawQuery
+		m["username"] = parsedURI.User.Username()
+		m["password"], _ = parsedURI.User.Password()
+
+		b, err := json.Marshal(m)
 		if err != nil {
 			fmt.Println("error:", err)
 		}
