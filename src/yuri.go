@@ -37,7 +37,7 @@ func main() {
 		m["opaque"] = parsedURI.Opaque
 		m["host"] = parsedURI.Host
 		m["path"] = parsedURI.Path
-		m["rawpath"] = parsedURI.RawPath
+		m["rawpath"] = parsedURI.EscapedPath()
 		m["rawquery"] = parsedURI.RawQuery
 
 		if parsedURI.User == nil {
