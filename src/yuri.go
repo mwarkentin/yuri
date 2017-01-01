@@ -39,6 +39,7 @@ func main() {
 		m["path"] = parsedURI.Path
 		m["rawpath"] = parsedURI.EscapedPath()
 		m["rawquery"] = parsedURI.RawQuery
+		m["fragment"] = parsedURI.Fragment
 
 		if parsedURI.User == nil {
 			m["username"] = ""
