@@ -10,6 +10,30 @@ import (
 	"github.com/urfave/cli"
 )
 
+// CreateURIMap builds a map out of a URL struct for JSON encoding.
+func CreateURIMap(u *url.URL) map[string]string {
+	var m map[string]string
+	m = make(map[string]string)
+
+	m["scheme"] = u.Scheme
+	m["opaque"] = u.Opaque
+	m["host"] = u.Host
+	m["path"] = u.Path
+	m["rawpath"] = u.EscapedPath()
+	m["rawquery"] = u.RawQuery
+	m["fragment"] = u.Fragment
+
+	if u.User == nil {
+		m["username"] = ""
+		m["password"] = ""
+	} else {
+		m["username"] = u.User.Username()
+		m["password"], _ = u.User.Password()
+	}
+
+	return m
+}
+
 func main() {
 	app := cli.NewApp()
 	app.Name = "yuri"
@@ -29,7 +53,9 @@ func main() {
 			log.Fatal(err)
 		}
 
-		b, err := json.Marshal(parsedURI)
+		m := CreateURIMap(parsedURI)
+
+		b, err := json.Marshal(m)
 		if err != nil {
 			fmt.Println("error:", err)
 		}

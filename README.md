@@ -30,35 +30,33 @@ $ make install
 ### CLI
 
 ```
-$ yuri https://username:password@stage.example.com:443/path | jq
+$ yuri "https://username:password@stage.example.com:443/path+to+foo?query1=1&query2=2#FRAG" | jq
 {
-  "Scheme": "https",
-  "Opaque": "",
-  "User": {},
-  "Host": "stage.example.com:443",
-  "Path": "/path",
-  "RawPath": "",
-  "ForceQuery": false,
-  "RawQuery": "",
-  "Fragment": ""
+  "fragment": "FRAG",
+  "host": "stage.example.com:443",
+  "opaque": "",
+  "password": "password",
+  "path": "/path+to+foo",
+  "rawpath": "/path+to+foo",
+  "rawquery": "query1=1&query2=2",
+  "scheme": "https",
+  "username": "username"
 }
 ```
 
 ### Available fields
 
-Yuri currently leverages the Go [`URL` type](https://golang.org/pkg/net/url/#URL) directly. Here are the fields it provides:
+Here are the JSON fields provided by yuri:
 
-```
-Scheme     string
-Opaque     string     // encoded opaque data
-User       *Userinfo  // username and password information
-Host       string     // host or host:port
-Path       string
-RawPath    string     // encoded path hint
-ForceQuery bool       // append a query ('?') even if RawQuery is empty
-RawQuery   string     // encoded query values, without '?'
-Fragment   string     // fragment for references, without '#'
-```
+* `scheme`: type of URI
+* `opaque`: encoded opaque data
+* `username`: basic auth username
+* `password`: basic auth password
+* `host`: host or host:port
+* `path`: path
+* `rawpath`: encoded path
+* `rawquery`: encoded query values, without `?`
+* `fragment`: fragment for references, without `#`
 
 ## Developing yuri
 
