@@ -60,6 +60,10 @@ Here are the JSON fields provided by yuri:
 
 ## Developing yuri
 
+### Running tests
+
+Run `make test`.
+
 ### Updating dependencies
 
 Run `make vendor` and check in updates.
