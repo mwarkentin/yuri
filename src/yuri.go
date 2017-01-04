@@ -39,30 +39,46 @@ func main() {
 	app.Name = "yuri"
 	app.Usage = "parse the urlz!"
 	app.Version = "0.1.0"
+
+	app.Flags = []cli.Flag{
+		cli.BoolFlag{
+			Name:  "environment",
+			Usage: "parse URLs from the environment",
+		},
+	}
+
 	app.Action = func(c *cli.Context) error {
-		if len(c.Args()) < 1 {
-			log.Fatal("No arguments. Usage: yuri <URI>")
+		if c.Bool("environment") {
+			os.Stdout.WriteString("Parsing environment variables...\n")
+			for _, env := range os.Environ() {
+				os.Stdout.WriteString(env + "\n")
+			}
+			return nil
+		} else {
+			if len(c.Args()) < 1 {
+				log.Fatal("No arguments. Usage: yuri <URI>")
+			}
+
+			if len(c.Args()) > 1 {
+				log.Fatal("More than 1 argument. Usage: yuri <URI>")
+			}
+
+			uri := c.Args().First()
+			parsedURI, err := url.Parse(uri)
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			m := CreateURIMap(parsedURI)
+
+			b, err := json.Marshal(m)
+			if err != nil {
+				fmt.Println("error:", err)
+			}
+			os.Stdout.Write(b)
+
+			return nil
 		}
-
-		if len(c.Args()) > 1 {
-			log.Fatal("More than 1 argument. Usage: yuri <URI>")
-		}
-
-		uri := c.Args().First()
-		parsedURI, err := url.Parse(uri)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		m := CreateURIMap(parsedURI)
-
-		b, err := json.Marshal(m)
-		if err != nil {
-			fmt.Println("error:", err)
-		}
-		os.Stdout.Write(b)
-
-		return nil
 	}
 
 	app.Run(os.Args)
