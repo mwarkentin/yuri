@@ -42,7 +42,7 @@ func main() {
 
 	app.Flags = []cli.Flag{
 		cli.BoolFlag{
-			Name:  "environment",
+			Name:  "environment, e",
 			Usage: "parse URLs from the environment",
 		},
 	}
