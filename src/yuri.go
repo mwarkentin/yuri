@@ -6,9 +6,20 @@ import (
 	"log"
 	"net/url"
 	"os"
+	"strings"
 
 	"github.com/urfave/cli"
 )
+
+func filter(vs []string, f func(string) bool) []string {
+	vsf := make([]string, 0)
+	for _, v := range vs {
+		if f(v) {
+			vsf = append(vsf, v)
+		}
+	}
+	return vsf
+}
 
 // CreateURIMap builds a map out of a URL struct for JSON encoding.
 func CreateURIMap(u *url.URL) map[string]string {
@@ -50,7 +61,10 @@ func main() {
 	app.Action = func(c *cli.Context) error {
 		if c.Bool("environment") {
 			os.Stdout.WriteString("Parsing environment variables...\n")
-			for _, env := range os.Environ() {
+			// for _, env := range os.Environ() {
+			for _, env := range filter(os.Environ(), func(s string) bool {
+				return strings.Contains(s, "URL")
+			}) {
 				os.Stdout.WriteString(env + "\n")
 			}
 			return nil
