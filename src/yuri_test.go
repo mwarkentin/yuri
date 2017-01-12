@@ -11,6 +11,8 @@ func TestCreateURIMapWithNoUsernameAndPassword(t *testing.T) {
 	em := map[string]string{
 		"fragment": "FRAG",
 		"host":     "stage.example.com:443",
+		"hostname": "stage.example.com",
+		"port":     "443",
 		"opaque":   "",
 		"password": "",
 		"path":     "/path+to+foo",
@@ -28,6 +30,8 @@ func TestCreateURIMapWithUsername(t *testing.T) {
 	em := map[string]string{
 		"fragment": "FRAG",
 		"host":     "stage.example.com:443",
+		"hostname": "stage.example.com",
+		"port":     "443",
 		"opaque":   "",
 		"password": "",
 		"path":     "/path+to+foo",
@@ -45,6 +49,8 @@ func TestCreateURIMapWithUsernameAndPassword(t *testing.T) {
 	em := map[string]string{
 		"fragment": "FRAG",
 		"host":     "stage.example.com:443",
+		"hostname": "stage.example.com",
+		"port":     "443",
 		"opaque":   "",
 		"password": "password",
 		"path":     "/path+to+foo",
@@ -54,6 +60,25 @@ func TestCreateURIMapWithUsernameAndPassword(t *testing.T) {
 		"username": "username",
 	}
 	parsedURI, _ := url.Parse("https://username:password@stage.example.com:443/path+to+foo?query1=1&query2=2#FRAG")
+	rm := CreateURIMap(parsedURI)
+	assert.Equal(t, rm, em)
+}
+
+func TestCreateURIMapWithNoPort(t *testing.T) {
+	em := map[string]string{
+		"fragment": "FRAG",
+		"host":     "stage.example.com",
+		"hostname": "stage.example.com",
+		"port":     "",
+		"opaque":   "",
+		"password": "password",
+		"path":     "/path+to+foo",
+		"rawpath":  "/path+to+foo",
+		"rawquery": "query1=1&query2=2",
+		"scheme":   "https",
+		"username": "username",
+	}
+	parsedURI, _ := url.Parse("https://username:password@stage.example.com/path+to+foo?query1=1&query2=2#FRAG")
 	rm := CreateURIMap(parsedURI)
 	assert.Equal(t, rm, em)
 }

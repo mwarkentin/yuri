@@ -34,6 +34,8 @@ $ yuri "https://username:password@stage.example.com:443/path+to+foo?query1=1&que
 {
   "fragment": "FRAG",
   "host": "stage.example.com:443",
+  "hostname": "stage.example.com",
+  "port": "443",
   "opaque": "",
   "password": "password",
   "path": "/path+to+foo",
@@ -53,6 +55,8 @@ Here are the JSON fields provided by yuri:
 * `username`: basic auth username
 * `password`: basic auth password
 * `host`: host or host:port
+* `hostname`: host without port
+* `port`: port
 * `path`: path
 * `rawpath`: encoded path
 * `rawquery`: encoded query values, without `?`
