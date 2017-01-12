@@ -72,4 +72,5 @@ Run `make vendor` and check in updates.
 
 * Set `EQUINOX_TOKEN` environment variable
 * Ensure `equinox.key` file exists
+* Push tag to Github
 * Run `make release version=<maj>.<min>.<patch>`
