@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/urfave/cli"
+	"gopkg.in/yaml.v2"
 )
 
 // Following code taken from https://github.com/golang/go/commit/1ff19201fd898c3e1a0ed5d3458c81c1f062570b
@@ -85,13 +86,19 @@ func main() {
 	app.Name = "yuri"
 	app.Usage = "parse the urlz!"
 	app.Version = "0.2.0"
+	app.Flags = []cli.Flag {
+    cli.BoolFlag{
+      Name: "yaml",
+      Usage: "Enable YAML output",
+    },
+  }
 	app.Action = func(c *cli.Context) error {
 		if len(c.Args()) < 1 {
-			log.Fatal("No arguments. Usage: yuri <URI>")
+			log.Fatal("No arguments. Usage: yuri [-yaml] <URI>")
 		}
 
-		if len(c.Args()) > 1 {
-			log.Fatal("More than 1 argument. Usage: yuri <URI>")
+		if len(c.Args()) > 2 {
+			log.Fatal("More than 2 arguments. Usage: yuri [-yaml] <URI>")
 		}
 
 		uri := c.Args().First()
@@ -102,7 +109,12 @@ func main() {
 
 		m := CreateURIMap(parsedURI)
 
-		b, err := json.Marshal(m)
+		var b []byte
+		if c.Bool("yaml") {
+			b, err = yaml.Marshal(m)
+		} else {
+			b, err = json.Marshal(m)
+		}
 		if err != nil {
 			fmt.Println("error:", err)
 		}

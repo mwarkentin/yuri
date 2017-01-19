@@ -45,11 +45,17 @@
 			"revisionTime": "2016-12-17T20:04:45Z"
 		},
 		{
-			"checksumSHA1": "LMu1NsthSqcXfKu0m6YGPAmwBcY=",
+			"checksumSHA1": "7cxwOBG3z8bcqlACknqxIV+jB/o=",
 			"path": "github.com/urfave/cli",
-			"revision": "0bdeddeeb0f650497d603c4ad7b20cfe685682f6",
-			"revisionTime": "2016-11-22T04:36:10Z"
+			"revision": "f1be59ff3d239f0942b201619030d302bce912cc",
+			"revisionTime": "2016-11-19T21:37:11Z"
+		},
+		{
+			"checksumSHA1": "12GqsW8PiRPnezDDy0v4brZrndM=",
+			"path": "gopkg.in/yaml.v2",
+			"revision": "a5b47d31c556af34a302ce5d659e6fea44d90de0",
+			"revisionTime": "2016-09-28T15:37:09Z"
 		}
 	],
-	"rootPath": "github.com/mwarkentin/yuri"
+	"rootPath": "github.com/nduthoit/yuri"
 }
