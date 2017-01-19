@@ -15,7 +15,7 @@ test: ## Run tests
 	go test -v -cover ./...
 
 vendor: ## Update dependencies
-	govendor fetch github.com/urfave/cli
+	govendor fetch github.com/urfave/cli gopkg.in/yaml.v2
 
 .PHONY: help fmt install vendor
 .DEFAULT_GOAL := help
