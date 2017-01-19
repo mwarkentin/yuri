@@ -97,8 +97,8 @@ func main() {
 			log.Fatal("No arguments. Usage: yuri [-yaml] <URI>")
 		}
 
-		if len(c.Args()) > 2 {
-			log.Fatal("More than 2 arguments. Usage: yuri [-yaml] <URI>")
+		if len(c.Args()) > 1 {
+			log.Fatal("More than 1 argument. Usage: yuri [-yaml] <URI>")
 		}
 
 		uri := c.Args().First()
