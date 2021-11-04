@@ -74,7 +74,7 @@ Run `make vendor` and check in updates.
 
 ### Releasing
 
-* Set `EQUINOX_TOKEN` environment variable
-* Ensure `equinox.key` file exists
-* Push tag to Github
-* Run `make release version=<maj>.<min>.<patch>`
+* Push tag to Github: `git tag x.y.z && git push origin x.y.z`
+* Create release: `gh release create x.y.z`
+
+Binaries for multiple architectures (linux / darwin) will be built in [Github Actions](.github/workflows/release.yml).
