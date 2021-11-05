@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 0.3.0 - 2021-11-04
+### Changed
+
+- Updated to use Go Modules for dependencies
 
 ## 0.2.0 - 2016-01-12
 ### Changed

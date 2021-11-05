@@ -3,17 +3,9 @@ CLI tool to parse URIs into their components
 
 ## Installation
 
-### Homebrew
+### Binaries
 
-This application can be installed via [Homebrew](http://brew.sh/):
-
-```
-$ brew install eqnxio/michael_warkentin/yuri
-```
-
-### Command line
-
-Command line installation instructions can be found on [equinox](https://dl.equinox.io/michael_warkentin/yuri/stable).
+Binaries for linux and macs can be downloaded and installed from the [Github Releases](https://github.com/mwarkentin/yuri/releases).
 
 ### Source
 
@@ -74,7 +66,7 @@ Run `make vendor` and check in updates.
 
 ### Releasing
 
-* Set `EQUINOX_TOKEN` environment variable
-* Ensure `equinox.key` file exists
-* Push tag to Github
-* Run `make release version=<maj>.<min>.<patch>`
+* Push tag to Github: `git tag x.y.z && git push origin x.y.z`
+* Create release: `gh release create x.y.z`
+
+Binaries for multiple architectures (linux / darwin) will be built in [Github Actions](.github/workflows/release.yml).

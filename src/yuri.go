@@ -84,7 +84,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "yuri"
 	app.Usage = "parse the urlz!"
-	app.Version = "0.2.0"
+	app.Version = "0.3.0"
 	app.Action = func(c *cli.Context) error {
 		if len(c.Args()) < 1 {
 			log.Fatal("No arguments. Usage: yuri <URI>")
